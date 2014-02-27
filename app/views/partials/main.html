@@ -1,8 +1,11 @@
-<div ng-repeat="tweet in tweets">
-  <h1>{{tweet.author_name}}</h1>
-  <h2>{{tweet.author_username}}</h2>
-  <p></p>
-  <p>{{tweet.text}}</p>
-  <p>{{tweet.avatar}}</p>
-  <p>{{tweet.created_at}}</p>
+<div class="panel panel-default" ng-repeat="tweet in tweets">
+	<div class="panel-heading">		
+		<img src="{{tweet.author_avatar}}" alt="twitter avatar image" />
+		{{tweet.author_name}}
+		({{tweet.author_username}})
+	</div>
+	<div class="panel-body">
+		{{tweet.text}}
+	</div>
+	<div class="panel-footer">{{tweet.created_at | date:'medium'}}</div>
 </div>
