@@ -1,15 +1,9 @@
-<div class="jumbotron">
-  <h1>'Allo, 'Allo <span ng-show="currentUser">{{ currentUser.name }}</span>!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#">Splendid!</a></p>
-</div>
-
-<div class="row marketing">
-  <div ng-repeat="thing in tweets">
-      <h4>{{thing.name}}</h4>
-      <p>{{thing.info}}</p>
-  </div>
+<p ng-show="currentUser">Welcome {{ currentUser.name }}!</p>
+<div ng-repeat="tweet in tweets">
+  <h1>{{tweet.author_name}}</h1>
+  <h2>{{tweet.author_username}}</h2>
+  <p></p>
+  <p>{{tweet.text}}</p>
+  <p>{{tweet.avatar}}</p>
+  <p>{{tweet.created_at}}</p>
 </div>
