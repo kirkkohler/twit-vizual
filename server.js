@@ -42,7 +42,7 @@ var passport = require('./lib/config/passport');
 
 // Connect to twitter
 twitter.connect();
-twitter.search();
+twitter.stream();
 
 var app = express();
 
