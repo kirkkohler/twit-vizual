@@ -1,13 +1,16 @@
 'use strict';
 
+/**
+* Module dependencies.
+*/
 var express = require('express'),
 	path = require('path'),
 	fs = require('fs'),
-	mongoose = require('mongoose'),
-	twitter = require('./lib/controllers/stream-twitter');
+	mongoose = require('mongoose');
 
 /**
  * Main application file
+ * Please note that the order of loading is important.
  */
 
 // Set default node environment to development
@@ -36,6 +39,11 @@ fs.readdirSync(modelsPath).forEach(function(file) {
 
 // Populate empty DB with sample data
 require('./lib/config/dummydata');
+
+/**
+* Module Twitter dependency.  Required after models have loaded.
+*/
+var twitter = require('./lib/controllers/stream-twitter');
 
 // Passport Configuration
 var passport = require('./lib/config/passport');
