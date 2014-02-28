@@ -29,7 +29,17 @@ body {
   margin: 5px 3px 5px 3px;
 }
 
+.img-panel-heading{
+  margin-right: 10px;
+}
 
+.panel-tweet-text {
+  height: 140px;
+}
+
+.panel-tweet-heading {
+  height: 100px;
+}
 
 /* Custom page footer */
 .footer {
@@ -71,8 +81,28 @@ body {
   margin-top: 28px;
 }
 
-/* Responsive: Portrait tablets and up */
+/* Large desktop */
+@media (min-width: 1200px) {
+  .panel-tweet-text {
+    height: 140px;
+  }
+
+  .panel-tweet-heading {
+    height: 100px;
+  }
+}
+
+/* Responsive: Portrait tablets and up - Medium */
+/* Portrait tablet to landscape and desktop */
 @media screen and (min-width: 768px) {
+  .panel-tweet-text {
+    height: 170px;
+  }
+
+  .panel-tweet-heading {
+    height: 100px;
+  }
+
   /* Remove the padding we set earlier */
   .header,
   .marketing,
@@ -88,4 +118,28 @@ body {
   .jumbotron {
     border-bottom: 0;
   }
+}
+
+/* SMALL - Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+  .panel-tweet-text{
+    height: 100px;
+  }
+
+  .panel-tweet-heading {
+    height: 100px;
+  }
+
+}
+
+/* XTRA-SMALL Landscape phones and down */
+@media (max-width: 480px) {
+  .panel-tweet-text{
+    height: 100px;
+  }
+
+  .panel-tweet-heading {
+    height: 100px;
+  }
+
 }

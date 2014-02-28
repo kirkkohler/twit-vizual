@@ -20,10 +20,17 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
 </head>
-<body ng-app="twitVizualApp">
+<body ng-app="twitVizualApp">    
     <!--[if lt IE 7]>
     <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+    <!-- Spans For CSS/Media Qurey testing purposes -->
+    <!-- 
+        <span class="visible-xs">SIZE XS - Landscape phones and down</span>
+        <span class="visible-sm">SIZE SM - Landscape phone to portrait tablet</span>
+        <span class="visible-md">SIZE MD - Portrait tablet to landscape and desktop - Portrait tablets and up</span>
+        <span class="visible-lg">SIZE LG - Large desktop</span>
+    -->
     <!-- Include nav bar partial
     ng-includes take an expression, so need to use string e.g. 'string' for angular to display -->
     <div ng-include="'views/partials/navbar.html'"></div>
