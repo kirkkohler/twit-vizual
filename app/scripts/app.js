@@ -26,6 +26,9 @@ app.config(function($routeProvider, $locationProvider, $httpProvider) {
       controller: 'SettingsController',
       authenticate: true
     })
+    .when('/about', {
+      templateUrl: 'partials/about'
+    })
     .otherwise({
       redirectTo: '/'
     });

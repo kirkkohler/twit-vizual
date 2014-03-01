@@ -6,6 +6,9 @@ app.controller('NavbarController', ['$scope', '$location', 'Auth',
       'title': 'Home',
       'link': '/'
     }, {
+      'title': 'About',
+      'link': '/about'
+    }, {
       'title': 'Settings',
       'link': '/settings'
     }];
