@@ -35,7 +35,7 @@
     ng-includes take an expression, so need to use string e.g. 'string' for angular to display -->
     <div ng-include="'views/partials/navbar.html'"></div>
     <!-- only show if user is logged in -->    
-    <div class="container-fluid"><p ng-show="currentUser">Welcome {{ currentUser.name }}!</p></div>
+    <div class="container-fluid"><p ng-show="currentUser" ng-cloak class="ng-cloak">Welcome {{ currentUser.name }}!</p></div>
     <!-- Main site / application content here -->
     <div ng-view=""></div>
     <!-- Footer -->
