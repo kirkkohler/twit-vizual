@@ -12,6 +12,18 @@
     "ejs": "~0.8.4",
     "ntwitter": "~0.5.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kirkkohler/twit-vizual.git"
+  },
+  "keywords": [
+    "twitvizual",
+    "twit-vizual"
+  ],
+  "author": "kirkkohler",
+  "bugs": {
+    "url": "https://github.com/kirkkohler/twit-vizual/issues"
+  },
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-autoprefixer": "~0.4.0",
@@ -56,7 +68,7 @@
     "karma-ng-html2js-preprocessor": "~0.1.0"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=0.10.22"
   },
   "scripts": {
     "test": "grunt test"
