@@ -38,7 +38,7 @@ fs.readdirSync(modelsPath).forEach(function(file) {
 });
 
 // Populate empty DB with sample data
-require('./lib/config/dummydata');
+//require('./lib/config/dummydata');
 
 /**
 * Module Twitter dependency.  Required after models have loaded.
@@ -50,7 +50,7 @@ var passport = require('./lib/config/passport');
 
 // Connect to twitter
 twitter.connect();
-twitter.stream();
+//twitter.stream();
 
 var app = express();
 
