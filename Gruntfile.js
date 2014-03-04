@@ -1,4 +1,4 @@
-// Generated on 2014-02-20 using generator-angular-fullstack 1.2.7
+// Generated on 2014-03-04 using generator-angular-fullstack 1.3.2
 'use strict';
 
 // # Globbing
@@ -31,8 +31,7 @@ module.exports = function(grunt) {
       dev: {
         options: {
           script: 'server.js',
-          debug: true,
-          TWITTER_CONSUMER_SECRET: 'LfSBO9f9JgbsSzrhs62m1WC7UOsAEjnI4yGArZ1w'
+          debug: true
         }
       },
       prod: {
@@ -55,8 +54,12 @@ module.exports = function(grunt) {
           livereload: true
         }
       },
+      mochaTest: {
+        files: ['test/server/{,*/}*.js'],
+        tasks: ['mochaTest']
+      },
       jsTest: {
-        files: ['test/spec/{,*/}*.js'],
+        files: ['test/client/spec/{,*/}*.js'],
         tasks: ['newer:jshint:test', 'karma']
       },
       styles: {
@@ -108,9 +111,9 @@ module.exports = function(grunt) {
       ],
       test: {
         options: {
-          jshintrc: 'test/.jshintrc'
+          jshintrc: 'test/client/.jshintrc'
         },
-        src: ['test/spec/{,*/}*.js']
+        src: ['test/client/spec/{,*/}*.js']
       }
     },
 
@@ -121,9 +124,9 @@ module.exports = function(grunt) {
           dot: true,
           src: [
             '.tmp',
-            '<%= yeoman.dist %>/views/*',
-            '<%= yeoman.dist %>/public/*',
-            '!<%= yeoman.dist %>/public/.git*',
+            '<%= yeoman.dist %>/*',
+            '!<%= yeoman.dist %>/.git*',
+            '!<%= yeoman.dist %>/Procfile'
           ]
         }]
       },
@@ -152,6 +155,40 @@ module.exports = function(grunt) {
           src: '{,*/}*.css',
           dest: '.tmp/styles/'
         }]
+      }
+    },
+
+    // Debugging with node inspector
+    'node-inspector': {
+      custom: {
+        options: {
+          'web-host': 'localhost'
+        }
+      }
+    },
+
+    // Use nodemon to run server in debug mode with an initial breakpoint
+    nodemon: {
+      debug: {
+        script: 'server.js',
+        options: {
+          nodeArgs: ['--debug-brk'],
+          env: {
+            PORT: process.env.PORT || 9000
+          },
+          callback: function(nodemon) {
+            nodemon.on('log', function(event) {
+              console.log(event.colour);
+            });
+
+            // opens browser on initial server start
+            nodemon.on('config:update', function() {
+              setTimeout(function() {
+                require('open')('http://localhost:8080/debug?port=5858');
+              }, 500);
+            });
+          }
+        }
       }
     },
 
@@ -312,6 +349,15 @@ module.exports = function(grunt) {
       test: [
         'copy:styles'
       ],
+      debug: {
+        tasks: [
+          'nodemon',
+          'node-inspector'
+        ],
+        options: {
+          logConcurrentOutput: true
+        }
+      },
       dist: [
         'copy:styles',
         'imagemin',
@@ -352,6 +398,19 @@ module.exports = function(grunt) {
         configFile: 'karma.conf.js',
         singleRun: true
       }
+    },
+
+    mochaTest: {
+      options: {
+        reporter: 'spec'
+      },
+      src: ['test/server/**/*.js']
+    },
+
+    env: {
+      test: {
+        NODE_ENV: 'test'
+      }
     }
   });
 
@@ -376,6 +435,16 @@ module.exports = function(grunt) {
       return grunt.task.run(['build', 'express:prod', 'open', 'express-keepalive']);
     }
 
+    if (target === 'debug') {
+      return grunt.task.run([
+        'clean:server',
+        'bower-install',
+        'concurrent:server',
+        'autoprefixer',
+        'concurrent:debug'
+      ]);
+    }
+
     grunt.task.run([
       'clean:server',
       'bower-install',
@@ -392,12 +461,32 @@ module.exports = function(grunt) {
     grunt.task.run(['serve']);
   });
 
-  grunt.registerTask('test', [
-    'clean:server',
-    'concurrent:test',
-    'autoprefixer',
-    'karma'
-  ]);
+  grunt.registerTask('test', function(target) {
+    if (target === 'server') {
+      return grunt.task.run([
+        'env:test',
+        'mochaTest'
+      ]);
+    }
+
+    if (target === 'client') {
+      return grunt.task.run([
+        'clean:server',
+        'concurrent:test',
+        'autoprefixer',
+        'karma'
+      ]);
+    }
+
+    grunt.task.run([
+      'env:test',
+      'mochaTest',
+      'clean:server',
+      'concurrent:test',
+      'autoprefixer',
+      'karma'
+    ]);
+  });
 
   grunt.registerTask('build', [
     'clean:dist',

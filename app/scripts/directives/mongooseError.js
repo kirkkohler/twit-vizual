@@ -1,11 +1,10 @@
 'use strict';
 
-angular.module('twitVizualApp')
-
-  /**
-   * Removes server error when user updates input
-   */
-  .directive('mongooseError', function () {
+/**
+ * Removes server error when user updates input
+ */
+app.directive('mongooseError', [
+  function() {
     return {
       restrict: 'A',
       require: 'ngModel',
@@ -15,4 +14,5 @@ angular.module('twitVizualApp')
         });
       }
     };
-  });
+  }
+]);
