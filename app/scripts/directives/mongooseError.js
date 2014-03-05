@@ -3,7 +3,7 @@
 /**
  * Removes server error when user updates input
  */
-app.directive('mongooseError', [
+app.directive('mongooseError',
   function() {
     return {
       restrict: 'A',
@@ -14,5 +14,4 @@ app.directive('mongooseError', [
         });
       }
     };
-  }
-]);
+  });

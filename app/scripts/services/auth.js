@@ -1,6 +1,6 @@
 'use strict';
 
-app.factory('Auth', ['$location', '$rootScope', 'Session', 'User', '$cookieStore', function Auth($location, $rootScope, Session, User, $cookieStore) {
+app.factory('Auth', function Auth($location, $rootScope, Session, User, $cookieStore) {
 
   // Get currentUser from cookie
   $rootScope.currentUser = $cookieStore.get('user') || null;
@@ -107,4 +107,4 @@ app.factory('Auth', ['$location', '$rootScope', 'Session', 'User', '$cookieStore
       return !!user;
     },
   };
-}]);
+});

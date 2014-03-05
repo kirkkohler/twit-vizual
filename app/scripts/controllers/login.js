@@ -1,28 +1,26 @@
 'use strict';
 
-app.controller('LoginController', ['$scope', 'Auth', '$location',
-  function($scope, Auth, $location) {
-    $scope.user = {};
-    $scope.errors = {};
+app.controller('LoginController', function($scope, Auth, $location) {
+  $scope.user = {};
+  $scope.errors = {};
 
-    $scope.login = function(form) {
-      $scope.submitted = true;
+  $scope.login = function(form) {
+    $scope.submitted = true;
 
-      if (form.$valid) {
-        Auth.login({
-          email: $scope.user.email,
-          password: $scope.user.password
+    if (form.$valid) {
+      Auth.login({
+        email: $scope.user.email,
+        password: $scope.user.password
+      })
+        .then(function() {
+          // Logged in, redirect to home
+          $location.path('/');
         })
-          .then(function() {
-            // Logged in, redirect to home
-            $location.path('/');
-          })
-          .
-        catch (function(err) {
-          err = err.data;
-          $scope.errors.other = err.message;
-        });
-      }
-    };
-  }
-]);
+        .
+      catch (function(err) {
+        err = err.data;
+        $scope.errors.other = err.message;
+      });
+    }
+  };
+});

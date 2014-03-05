@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('SignupController', ['$scope', 'Auth', '$location', function($scope, Auth, $location) {
+app.controller('SignupController', function($scope, Auth, $location) {
   $scope.user = {};
   $scope.errors = {};
 
@@ -25,9 +25,9 @@ app.controller('SignupController', ['$scope', 'Auth', '$location', function($sco
         // Update validity of form fields that match the mongoose errors
         angular.forEach(err.errors, function(error, field) {
           form[field].$setValidity('mongoose', false);
-          $scope.errors[field] = error.type;
+          $scope.errors[field] = error.message;
         });
       });
     }
   };
-}]);
+});

@@ -1,7 +1,6 @@
 'use strict';
 
-app.factory('User', ['$resource',
-  function($resource) {
+app.factory('User', function ($resource) {
     return $resource('/api/users/:id', {
       id: '@id'
     }, { //parameters default
@@ -12,9 +11,8 @@ app.factory('User', ['$resource',
       get: {
         method: 'GET',
         params: {
-          id: 'me'
+          id:'me'
         }
       }
     });
-  }
-]);
+  });
