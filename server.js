@@ -50,7 +50,7 @@ var passport = require('./lib/config/passport');
 
 // Connect to twitter
 twitter.connect();
-//twitter.stream();
+twitter.stream();
 
 var app = express();
 
