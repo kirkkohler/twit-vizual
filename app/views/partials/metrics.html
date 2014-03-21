@@ -2,12 +2,11 @@
 	<div class="row">
 		<div class="col-sm-12">
 			<h1>Metrics</h1>
-			<p>{{this.greeting}}</p>
 			<d3-bars data="d3Data"></d3-bars>
 
 			<div ng-repeat="row in d3Data">
-				<label>Score {{$index+1}}:</label>
-				<input type="text" ng-model="d3Data[$index].score"></input>
+				<label>{{d3Data[$index].name}}</label>
+				<input type="text" ng-model="d3Data[$index].count"></input>
 			</div>
 		</div>
 	</div>

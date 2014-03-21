@@ -1,33 +1,39 @@
 'use strict';
 
-app.controller('MetricsController', function($scope) {
-	$scope.greeting = "Resize the page to see the re-rendering";
-	// hard-code data
-	$scope.d3Data = [{
-		name: 'Greg',
-		score: 98
-	}, {
-		name: 'Ari',
-		score: 96
-	}, {
-		name: 'Q',
-		score: 75
-	}, {
-		name: 'Loser',
-		score: 48
-	}]; // end hard code data
+app.controller('MetricsController', function($scope, $http) {
+	// get data from tweet stream in db
+	$http.get('/api/tweets').success(function(tweets) {
+		$scope.tweets = tweets;
+		$scope.d3Data = [{
+			name: 'ANGULARJS',
+			count: 0
+		}, {
+			name: 'NODEJS',
+			count: 0
+		}, {
+			name: 'MONGODB',
+			count: 0
+		}, {
+			name: 'EXPRESSJS',
+			count: 0
+		}, {
+			name: 'JAVASCRIPT',
+			count: 0
+		}];
 
-	$scope.extraData = [{
-		name: 'Greg',
-		score: 2
-	}, {
-		name: 'Ari',
-		score: 36
-	}, {
-		name: 'Q',
-		score: 55
-	}, {
-		name: 'Loser',
-		score: 14
-	}]; // end hard code data
+		// get counts for twitter search
+		for (var i = 0; i < $scope.tweets.length; i++) {
+			if ($scope.tweets[i].text.toUpperCase().indexOf($scope.d3Data[0].name) !== -1) {
+				$scope.d3Data[0].count++;
+			} else if ($scope.tweets[i].text.toUpperCase().indexOf($scope.d3Data[1].name) !== -1) {
+				$scope.d3Data[1].count++;
+			} else if ($scope.tweets[i].text.toUpperCase().indexOf($scope.d3Data[2].name) !== -1) {
+				$scope.d3Data[2].count++;
+			} else if ($scope.tweets[i].text.toUpperCase().indexOf($scope.d3Data[3].name) !== -1) {
+				$scope.d3Data[3].count++;
+			} else if ($scope.tweets[i].text.toUpperCase().indexOf($scope.d3Data[4].name) !== -1) {
+				$scope.d3Data[4].count++;
+			}
+		}
+	});
 });

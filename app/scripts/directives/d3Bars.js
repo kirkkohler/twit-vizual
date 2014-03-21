@@ -56,7 +56,7 @@ app.directive('d3Bars', function() {
 					// our xScale
 					xScale = d3.scale.linear()
 						.domain([0, d3.max(data, function(d) {
-							return d.score;
+							return d.count;
 						})])
 						.range([0, width]);
 
@@ -74,12 +74,12 @@ app.directive('d3Bars', function() {
 						return i * (barHeight + barPadding);
 					})
 					.attr('fill', function(d) {
-						return color(d.score);
+						return color(d.count);
 					})
 					.transition()
 					.duration(1000)
 					.attr('width', function(d) {
-						return xScale(d.score);
+						return xScale(d.count);
 					}); // end selectAll function
 			}; // end render function
 
