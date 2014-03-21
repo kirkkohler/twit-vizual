@@ -24,7 +24,8 @@ app.directive('d3Bars', function() {
 			// our d3 code will go here
 			var svg = d3.select(element[0])
 				.append('svg')
-				.style('width', '100%');
+				.style('width', '100%')
+				.style('margin', '5px');
 
 			//Browser onresize event
 			window.onresize = function() {
@@ -48,7 +49,7 @@ app.directive('d3Bars', function() {
 				}
 
 				// setup variables
-				var width = d3.select(element[0]).node().offsetWidth - margin,
+				var width = d3.select(element[0]).node().offsetWidth - (margin),
 					// calculate the height
 					height = scope.data.length * (barHeight + barPadding),
 					// Use the category20() scale function for multicolor support
@@ -58,7 +59,7 @@ app.directive('d3Bars', function() {
 						.domain([0, d3.max(data, function(d) {
 							return d.count;
 						})])
-						.range([0, width]);
+						.range([0, width - 120]);
 
 				// set the height based on the calculations above
 				svg.attr('height', height);
@@ -69,9 +70,9 @@ app.directive('d3Bars', function() {
 					.append('rect')
 					.attr('height', barHeight)
 					.attr('width', 140)
-					.attr('x', Math.round(margin / 2))
+					.attr('x', Math.round(margin / 2) + 120)
 					.attr('y', function(d, i) {
-						return i * (barHeight + barPadding);
+						return i * (barHeight + barPadding) + 5;
 					})
 					.attr('fill', function(d) {
 						return color(d.count);
@@ -81,6 +82,19 @@ app.directive('d3Bars', function() {
 					.attr('width', function(d) {
 						return xScale(d.count);
 					}); // end selectAll function
+
+				svg.selectAll('text')
+					.data(data)
+					.enter()
+					.append('text')
+					.attr('fill', '#000')
+					.attr('y', function(d, i) {
+						return i * (barHeight + barPadding) + 20;
+					})
+					.attr('x', 0)
+					.text(function(d) {
+						return d.name + ' (' + d.count + ')';
+					});
 			}; // end render function
 
 			// watch for data changes and re-render
