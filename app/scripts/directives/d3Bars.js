@@ -4,7 +4,7 @@
 app.directive('d3Bars', function() {
 	return {
 		/* restrict directive to element names only */
-		restrict: 'E',
+		restrict: 'AE',
 		scope: {
 			// isolate so we can reuse directive with different data.
 			data: '=' // bi-directional data-binding
