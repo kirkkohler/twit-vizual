@@ -7,11 +7,15 @@ app.controller('NavbarController', function($scope, $location, Auth) {
   }, {
     'title': 'About',
     'link': '/about'
-  }, {
+  }];
+  /*
+  * Removed until user sign-up is supported
+  , {
     'title': 'Settings',
     'link': '/settings'
   }];
-
+  */
+  
   $scope.logout = function() {
     Auth.logout()
       .then(function() {
