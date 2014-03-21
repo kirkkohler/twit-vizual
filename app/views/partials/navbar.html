@@ -15,6 +15,8 @@
 			<li ng-repeat="item in menu" ng-class="{active: isActive(item.link)}">
 				<a ng-href="{{item.link}}">{{item.title}}</a>
 			</li>
+			<li ng-class="{active: isActive('/metrics')}"><a href="/metrics">Metrics</a></li>			
+			<li ng-class="{active: isActive('/about')}"><a href="/about">About</a></li>
 <!-- Removed until user sign-up is supported
 			<li ng-hide="currentUser" ng-class="{active: isActive('/login')}"><a href="/login">Login</a></li>
 			<li ng-hide="currentUser" ng-class="{active: isActive('/signup')}"><a href="/signup">Sign up</a></li>

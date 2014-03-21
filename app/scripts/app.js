@@ -29,6 +29,10 @@ app.config(function($routeProvider, $locationProvider, $httpProvider) {
     .when('/about', {
       templateUrl: 'partials/about'
     })
+    .when('/metrics', {
+      templateUrl: 'partials/metrics',
+      controller: 'MetricsController'
+    })
     .otherwise({
       redirectTo: '/'
     });

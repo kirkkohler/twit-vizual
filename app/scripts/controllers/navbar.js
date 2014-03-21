@@ -4,9 +4,6 @@ app.controller('NavbarController', function($scope, $location, Auth) {
   $scope.menu = [{
     'title': 'Home',
     'link': '/'
-  }, {
-    'title': 'About',
-    'link': '/about'
   }];
   /*
   * Removed until user sign-up is supported
