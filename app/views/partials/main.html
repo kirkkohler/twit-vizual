@@ -6,8 +6,8 @@
 				<h4>{{tweet.author_name}}</h4>
 				<small>@{{tweet.author_username}}</small>
 			</div>
-			<div class="panel-body panel-tweet-text">
-				<p>{{tweet.text}}</p>
+			<div class="panel-body panel-tweet-text" ng-bind-html="tweet.text | linky:'_blank'">
+				<!-- display tweet text here and turn links into clickable hyper links via linky filter -->
 			</div>
 			<div class="panel-footer"><small>{{tweet.created_at | date:'medium'}}</small></div>
 		</div>
