@@ -4,6 +4,7 @@
 
 app.service('Tweet',
 	function Tweet($http) {
+		// need to use 'this' to allow returning a single object as a service and constructor
 		// AngularJS will instantiate a singleton by calling "new" on this function
 		$http.get('/api/tweets').success(function(data, status, headers, config) {
 			// this callback will be called asynchronously

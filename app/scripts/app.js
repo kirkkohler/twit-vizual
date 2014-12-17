@@ -7,6 +7,7 @@ var app = angular.module('twitVizualApp', [
   'ngRoute'
 ]);
 
+/** Setup providers and constants.  Can only inject providers here */
 app.config(function($routeProvider, $locationProvider, $httpProvider) {
   $routeProvider
     .when('/', {
@@ -55,6 +56,7 @@ app.config(function($routeProvider, $locationProvider, $httpProvider) {
     }
   ]);
 })
+/** After injector is created, run the app, can only inject instances here, not providers */
   .run(function($rootScope, $location, Auth) {
 
     // Redirect to login if route requires auth and you're not logged in
