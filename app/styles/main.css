@@ -41,6 +41,11 @@ body {
   height: 100px;
 }
 
+.panel-tweet-heading a,.panel-tweet-heading a:hover, .panel-tweet-heading a:focus {
+  color: #000000;
+  text-decoration: none;
+}
+
 /* Custom page footer */
 .footer {
   padding-top: 5px;
