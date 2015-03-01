@@ -1,6 +1,8 @@
 'use strict';
 
 app.controller('MetricsController', function($scope, $http) {
+	var max = 50;
+
 	// get data from tweet stream in db
 	$http.get('/api/tweets').success(function(tweets) {
 		$scope.tweets = tweets;
@@ -24,6 +26,10 @@ app.controller('MetricsController', function($scope, $http) {
 		// get counts for twitter search
 		// TODO calculate counts server side and serve up to new api route/endpoint.
 		for (var i = 0; i < $scope.tweets.length; i++) {
+			// if counted max, break out of for loop that counts
+			if (i > max){
+				break;
+			}
 			if ($scope.tweets[i].text.toUpperCase().indexOf($scope.d3Data[0].name) !== -1) {
 				$scope.d3Data[0].count++;
 			} else if ($scope.tweets[i].text.toUpperCase().indexOf($scope.d3Data[1].name) !== -1) {
