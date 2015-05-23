@@ -33,6 +33,14 @@ From node command prompt and within project directory run the following
 
 	grunt serve
 
+# Release Application
+---
+Pushing to Heroku is simple.  
+
+1. grunt build
+2. git commit dist 
+3. git subtree push --prefix dist origin prod
+
 # Application Structure
 ---
 
