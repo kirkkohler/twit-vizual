@@ -1,7 +1,10 @@
 'use strict';
 
-app.controller('MainController', function($scope, $http) {
-	$http.get('/api/tweets').success(function(tweets) {
-		$scope.tweets = tweets;
-	});
+app.controller('MainController', function ($scope, TweetService) {
+  TweetService.getTweets().success(function (response) {
+    $scope.tweets = response;
+  }).error(function (response) {
+    console.log('error');
+    console.log(response);
+  });
 });
