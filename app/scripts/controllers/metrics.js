@@ -42,23 +42,39 @@ app.controller('MetricsController', function ($scope, TweetService) {
       if (i >= max) {
         break;
       }
-      if ($scope.tweets[i].text.toUpperCase().indexOf($scope.d3Data[(0)].name) !== -1) {
+      if ($scope.tweets[i].text.toUpperCase().indexOf($scope.d3Data[(0)].name.toUpperCase()) !== -1) {
         $scope.d3Data[0].count++;
-      } else if ($scope.tweets[i].text.toUpperCase().indexOf($scope.d3Data[1].name) !== -1) {
+      } 
+
+      if ($scope.tweets[i].text.toUpperCase().indexOf($scope.d3Data[1].name.toUpperCase()) !== -1) {
         $scope.d3Data[1].count++;
-      } else if ($scope.tweets[i].text.toUpperCase().indexOf($scope.d3Data[2].name) !== -1) {
+      }
+
+      if ($scope.tweets[i].text.toUpperCase().indexOf($scope.d3Data[2].name.toUpperCase()) !== -1) {
         $scope.d3Data[2].count++;
-      } else if ($scope.tweets[i].text.toUpperCase().indexOf($scope.d3Data[3].name) !== -1) {
+      }
+
+      if ($scope.tweets[i].text.toUpperCase().indexOf($scope.d3Data[3].name.toUpperCase()) !== -1) {
         $scope.d3Data[3].count++;
-      } else if ($scope.tweets[i].text.toUpperCase().indexOf($scope.d3Data[4].name) !== -1) {
+      }
+
+      if ($scope.tweets[i].text.toUpperCase().indexOf($scope.d3Data[4].name.toUpperCase()) !== -1) {
         $scope.d3Data[4].count++;
-      } else if ($scope.tweets[i].text.toUpperCase().indexOf($scope.d3Data[5].name) !== -1) {
+      }
+
+      if ($scope.tweets[i].text.toUpperCase().indexOf($scope.d3Data[5].name.toUpperCase()) !== -1) {
         $scope.d3Data[5].count++;
-      } else if ($scope.tweets[i].text.toUpperCase().indexOf($scope.d3Data[6].name) !== -1) {
+      }
+
+      if ($scope.tweets[i].text.toUpperCase().indexOf($scope.d3Data[6].name.toUpperCase()) !== -1) {
         $scope.d3Data[6].count++;
-      } else if ($scope.tweets[i].text.toUpperCase().indexOf($scope.d3Data[7].name) !== -1) {
+      }
+
+      if ($scope.tweets[i].text.toUpperCase().indexOf($scope.d3Data[7].name.toUpperCase()) !== -1) {
         $scope.d3Data[7].count++;
-      } else if ($scope.tweets[i].text.toUpperCase().indexOf($scope.d3Data[8].name) !== -1) {
+      }
+
+      if ($scope.tweets[i].text.toUpperCase().indexOf($scope.d3Data[8].name.toUpperCase()) !== -1) {
         $scope.d3Data[8].count++;
       }
     }
