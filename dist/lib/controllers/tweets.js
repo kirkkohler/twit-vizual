@@ -9,7 +9,7 @@ var mongoose = require('mongoose'),
  * Get Tweets
  */
 exports.get = function(req, res) {
-	return Tweet.find(function(err, tweet) {
+	return Tweet.find().sort('-date').limit(100).exec(function(err, tweet) {
 		if (!err) {
 			return res.json(tweet);
 		} else {
