@@ -1,25 +1,37 @@
 'use strict';
 
 app.controller('MetricsController', function ($scope, TweetService) {
-  var max = 50;
+  var max = 100;
 
   // get data from tweet stream in db
   TweetService.getTweets().success(function (response) {
     $scope.tweets = response;
     $scope.d3Data = [{
-      name: 'ANGULARJS',
+      name: 'AI',
       count: 0
     }, {
-      name: 'NODEJS',
+      name: 'ArtificialIntelligence',
       count: 0
     }, {
-      name: 'MONGODB',
+      name: 'ML',
       count: 0
     }, {
-      name: 'EXPRESSJS',
+      name: 'MachineLearning',
       count: 0
     }, {
-      name: 'JAVASCRIPT',
+      name: 'VR',
+      count: 0
+    }, {
+      name: 'VirtualReality',
+      count: 0
+    }, {
+      name: 'AR',
+      count: 0
+    }, {
+      name: 'AugmentedReality',
+      count: 0
+    }, {
+      name: 'MixedReality',
       count: 0
     }];
 
@@ -27,10 +39,10 @@ app.controller('MetricsController', function ($scope, TweetService) {
     // TODO calculate counts server side and serve up to new api route/endpoint.
     for (var i = 0; i < $scope.tweets.length; i++) {
       // if counted max, break out of for loop that counts
-      if (i > max) {
+      if (i >= max) {
         break;
       }
-      if ($scope.tweets[i].text.toUpperCase().indexOf($scope.d3Data[0].name) !== -1) {
+      if ($scope.tweets[i].text.toUpperCase().indexOf($scope.d3Data[(0)].name) !== -1) {
         $scope.d3Data[0].count++;
       } else if ($scope.tweets[i].text.toUpperCase().indexOf($scope.d3Data[1].name) !== -1) {
         $scope.d3Data[1].count++;
@@ -40,6 +52,14 @@ app.controller('MetricsController', function ($scope, TweetService) {
         $scope.d3Data[3].count++;
       } else if ($scope.tweets[i].text.toUpperCase().indexOf($scope.d3Data[4].name) !== -1) {
         $scope.d3Data[4].count++;
+      } else if ($scope.tweets[i].text.toUpperCase().indexOf($scope.d3Data[5].name) !== -1) {
+        $scope.d3Data[5].count++;
+      } else if ($scope.tweets[i].text.toUpperCase().indexOf($scope.d3Data[6].name) !== -1) {
+        $scope.d3Data[6].count++;
+      } else if ($scope.tweets[i].text.toUpperCase().indexOf($scope.d3Data[7].name) !== -1) {
+        $scope.d3Data[7].count++;
+      } else if ($scope.tweets[i].text.toUpperCase().indexOf($scope.d3Data[8].name) !== -1) {
+        $scope.d3Data[8].count++;
       }
     }
   });

@@ -65,7 +65,7 @@ How a frontend application should request data from the API.
 
 | HTTP | Verb |	URL | Description |
 | ---- | ---- | ---- | ---- | 
-| GET | /api/tweets | Get latest streaming tweets from twitter |
+| GET | /api/tweets | Get latest 100 streaming tweets from twitter |
 
 TBD 02/2014
 | POST | /api/todos | Create a single todo | 
