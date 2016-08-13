@@ -1,0 +1,22 @@
+{
+  "name": "twit-vizual-stage",
+  "description": "staging site",
+  "scripts": {
+  },
+  "env": {
+    "NODE_ENV": {
+      "required": true
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "addons": [
+    "mongohq"
+  ],
+  "buildpacks": [
+
+  ]
+}
